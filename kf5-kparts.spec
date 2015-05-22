@@ -1,19 +1,15 @@
-# TODO:
-# Not packaged:
-# /usr/include/KF5
-# /usr/share/kservicetypes5
-%define		kdeframever	5.4
+%define		kdeframever	5.10
 %define		qtver		5.3.2
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
 Name:		kf5-%{kfname}
-Version:	5.4.0
-Release:	0.1
+Version:	5.10.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	138eb754aa6573dc22a3b8fb1967e19c
+# Source0-md5:	b492483075fff00b6a0f143ac397e28f
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -102,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README.md
 %attr(755,root,root) %ghost %{_libdir}/libKF5Parts.so.5
-%attr(755,root,root) %{_libdir}/libKF5Parts.so.5.4.0
+%attr(755,root,root) %{_libdir}/libKF5Parts.so.*.*
 %attr(755,root,root) %{qt5dir}/plugins/notepadpart.so
 %attr(755,root,root) %{qt5dir}/plugins/spellcheckplugin.so
 %{_datadir}/kservicetypes5/browserview.desktop
