@@ -1,15 +1,15 @@
-%define		kdeframever	5.45
-%define		qtver		5.3.2
+%define		kdeframever	5.53
+%define		qtver		5.9.0
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
 Name:		kf5-%{kfname}
-Version:	5.45.0
+Version:	5.53.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	e16cc9c21ae473d818f40888c18b3012
+# Source0-md5:	81379bd6d6adf476d776c74874594c09
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -108,6 +108,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/kservicetypes5/kpart.desktop
 %{_datadir}/kservicetypes5/krop.desktop
 %{_datadir}/kservicetypes5/krwp.desktop
+%{_datadir}/kdevappwizard/templates/kpartsapp.tar.bz2
 
 %files devel
 %defattr(644,root,root,755)
