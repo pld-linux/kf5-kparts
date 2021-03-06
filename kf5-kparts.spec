@@ -1,15 +1,15 @@
-%define		kdeframever	5.67
+%define		kdeframever	5.79
 %define		qtver		5.9.0
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
 Name:		kf5-%{kfname}
-Version:	5.67.0
+Version:	5.79.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	cc3125f7ae87b52e62571040749a4732
+# Source0-md5:	03d1d45c3f029da0431f3145db65f25b
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -101,13 +101,15 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 %attr(755,root,root) %ghost %{_libdir}/libKF5Parts.so.5
 %attr(755,root,root) %{_libdir}/libKF5Parts.so.*.*
-%attr(755,root,root) %{qt5dir}/plugins/notepadpart.so
+#%%attr(755,root,root) %{qt5dir}/plugins/notepadpart.so
 %attr(755,root,root) %{qt5dir}/plugins/spellcheckplugin.so
 %{_datadir}/kservicetypes5/browserview.desktop
 %{_datadir}/kservicetypes5/kpart.desktop
-%{_datadir}/kservicetypes5/krop.desktop
-%{_datadir}/kservicetypes5/krwp.desktop
 %{_datadir}/kdevappwizard/templates/kpartsapp.tar.bz2
+%{_datadir}/kservicetypes5/kparts-readonlypart.desktop
+%{_datadir}/kservicetypes5/kparts-readwritepart.desktop
+%{_datadir}/qlogging-categories5/kparts.categories
+
 
 %files devel
 %defattr(644,root,root,755)
