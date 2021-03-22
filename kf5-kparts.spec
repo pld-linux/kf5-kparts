@@ -1,15 +1,15 @@
-%define		kdeframever	5.79
+%define		kdeframever	5.80
 %define		qtver		5.9.0
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
 Name:		kf5-%{kfname}
-Version:	5.79.0
+Version:	5.80.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	03d1d45c3f029da0431f3145db65f25b
+# Source0-md5:	2bb69c8eed33d10bca710f4f23179302
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
 BuildRequires:	Qt5DBus-devel >= %{qtver}
@@ -99,9 +99,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{kfname}5.lang
 %defattr(644,root,root,755)
 %doc README.md
-%attr(755,root,root) %ghost %{_libdir}/libKF5Parts.so.5
+%ghost %{_libdir}/libKF5Parts.so.5
 %attr(755,root,root) %{_libdir}/libKF5Parts.so.*.*
-#%%attr(755,root,root) %{qt5dir}/plugins/notepadpart.so
 %attr(755,root,root) %{qt5dir}/plugins/spellcheckplugin.so
 %{_datadir}/kservicetypes5/browserview.desktop
 %{_datadir}/kservicetypes5/kpart.desktop
@@ -116,5 +115,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/KF5/KParts
 %{_includedir}/KF5/kparts_version.h
 %{_libdir}/cmake/KF5Parts
-%attr(755,root,root) %{_libdir}/libKF5Parts.so
+%{_libdir}/libKF5Parts.so
 %{qt5dir}/mkspecs/modules/qt_KParts.pri
