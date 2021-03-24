@@ -1,5 +1,5 @@
 %define		kdeframever	5.80
-%define		qtver		5.9.0
+%define		qtver		5.14.0
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
@@ -12,44 +12,38 @@ Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{ve
 # Source0-md5:	2bb69c8eed33d10bca710f4f23179302
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel >= %{qtver}
-BuildRequires:	Qt5DBus-devel >= %{qtver}
-BuildRequires:	Qt5Gui-devel >= %{qtver}
-BuildRequires:	Qt5Network-devel >= %{qtver}
 BuildRequires:	Qt5Test-devel >= %{qtver}
 BuildRequires:	Qt5Widgets-devel >= %{qtver}
 BuildRequires:	Qt5Xml-devel >= %{qtver}
-BuildRequires:	cmake >= 2.8.12
-BuildRequires:	gettext-devel
-BuildRequires:	kf5-attica-devel >= %{version}
+BuildRequires:	cmake >= 3.5
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
-BuildRequires:	kf5-kauth-devel >= %{version}
-BuildRequires:	kf5-kbookmarks-devel >= %{version}
-BuildRequires:	kf5-kcodecs-devel >= %{version}
-BuildRequires:	kf5-kcompletion-devel >= %{version}
 BuildRequires:	kf5-kconfig-devel >= %{version}
-BuildRequires:	kf5-kconfigwidgets-devel >= %{version}
 BuildRequires:	kf5-kcoreaddons-devel >= %{version}
-BuildRequires:	kf5-kdbusaddons-devel >= %{version}
-BuildRequires:	kf5-kglobalaccel-devel >= %{version}
-BuildRequires:	kf5-kguiaddons-devel >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
 BuildRequires:	kf5-kiconthemes-devel >= %{version}
 BuildRequires:	kf5-kio-devel >= %{version}
-BuildRequires:	kf5-kitemviews-devel >= %{version}
 BuildRequires:	kf5-kjobwidgets-devel >= %{version}
-BuildRequires:	kf5-knotifications-devel >= %{version}
 BuildRequires:	kf5-kservice-devel >= %{version}
 BuildRequires:	kf5-ktextwidgets-devel >= %{version}
 BuildRequires:	kf5-kwidgetsaddons-devel >= %{version}
-BuildRequires:	kf5-kwindowsystem-devel >= %{version}
 BuildRequires:	kf5-kxmlgui-devel >= %{version}
-BuildRequires:	kf5-solid-devel >= %{version}
-BuildRequires:	kf5-sonnet-devel >= %{version}
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
+Requires:	Qt5Core >= %{qtver}
+Requires:	Qt5Widgets >= %{qtver}
+Requires:	Qt5Xml >= %{qtver}
 Requires:	kf5-dirs
+Requires:	kf5-kconfig >= %{version}
+Requires:	kf5-kcoreaddons >= %{version}
+Requires:	kf5-ki18n >= %{version}
+Requires:	kf5-kiconthemes >= %{version}
+Requires:	kf5-kio >= %{version}
+Requires:	kf5-kjobwidgets >= %{version}
+Requires:	kf5-kservice >= %{version}
+Requires:	kf5-kwidgetsaddons >= %{version}
+Requires:	kf5-kxmlgui >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		qt5dir		%{_libdir}/qt5
@@ -66,6 +60,7 @@ Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	kf5-kio-devel >= %{version}
 Requires:	kf5-ktextwidgets-devel >= %{version}
+Requires:	kf5-kxmlgui-devel >= %{version}
 
 %description devel
 Header files for %{kfname} development.
