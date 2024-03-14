@@ -1,23 +1,23 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		kparts
 
 Summary:	Plugin framework for user interface components
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	bae89e0a319bd60e743900176ff2dfe9
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	e76b3f641bbab68d93fdc71dcc1c793d
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel >= %{qtver}
-BuildRequires:	Qt6Test-devel >= %{qtver}
-BuildRequires:	Qt6Widgets-devel >= %{qtver}
-BuildRequires:	Qt6Xml-devel >= %{qtver}
+BuildRequires:	Qt5Core-devel >= %{qtver}
+BuildRequires:	Qt5Test-devel >= %{qtver}
+BuildRequires:	Qt5Widgets-devel >= %{qtver}
+BuildRequires:	Qt5Xml-devel >= %{qtver}
 BuildRequires:	cmake >= 3.16
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-kconfig-devel >= %{version}
@@ -34,9 +34,9 @@ BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires:	Qt6Core >= %{qtver}
-Requires:	Qt6Widgets >= %{qtver}
-Requires:	Qt6Xml >= %{qtver}
+Requires:	Qt5Core >= %{qtver}
+Requires:	Qt5Widgets >= %{qtver}
+Requires:	Qt5Xml >= %{qtver}
 Requires:	kf5-dirs
 Requires:	kf5-kconfig >= %{version}
 Requires:	kf5-kcoreaddons >= %{version}
@@ -49,7 +49,7 @@ Requires:	kf5-kwidgetsaddons >= %{version}
 Requires:	kf5-kxmlgui >= %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 This library implements the framework for KDE parts, which are
@@ -91,7 +91,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}6
+%find_lang %{kfname}5
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -99,17 +99,23 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}6.lang
+%files -f %{kfname}5.lang
 %defattr(644,root,root,755)
 %doc README.md
-%ghost %{_libdir}/libKF6Parts.so.6
-%attr(755,root,root) %{_libdir}/libKF6Parts.so.*.*
-#%%attr(755,root,root) %{qt6dir}/plugins/spellcheckplugin.so
-%{_datadir}/qlogging-categories6/kparts.categories
-%{_datadir}/kdevappwizard/templates/kparts6-app.tar.bz2
+%ghost %{_libdir}/libKF5Parts.so.5
+%attr(755,root,root) %{_libdir}/libKF5Parts.so.*.*
+#%%attr(755,root,root) %{qt5dir}/plugins/spellcheckplugin.so
+%{_datadir}/kservicetypes5/browserview.desktop
+%{_datadir}/kservicetypes5/kpart.desktop
+%{_datadir}/kdevappwizard/templates/kpartsapp.tar.bz2
+%{_datadir}/kservicetypes5/kparts-readonlypart.desktop
+%{_datadir}/kservicetypes5/kparts-readwritepart.desktop
+%{_datadir}/qlogging-categories5/kparts.categories
+
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF6/KParts
-%{_libdir}/cmake/KF6Parts
-%{_libdir}/libKF6Parts.so
+%{_includedir}/KF5/KParts
+%{_libdir}/cmake/KF5Parts
+%{_libdir}/libKF5Parts.so
+%{qt5dir}/mkspecs/modules/qt_KParts.pri
